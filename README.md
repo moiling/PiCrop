@@ -2,6 +2,8 @@
 #### Picture Cropper. Use Android native cropper.
 PS. This repository is just for testing jcenter.
 
+[Chinese README](https://github.com/moiling/PiCrop/blob/master/README_CHINESE.md)
+
 ## Version
 `0.1.0`
 
