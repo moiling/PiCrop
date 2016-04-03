@@ -20,7 +20,7 @@ PS. This repository is just for testing jcenter.
   ```
   1.2 Maven:
   ```
-  dependency>
+  <dependency>
     <groupId>com.moinut</groupId>
     <artifactId>picrop</artifactId>
     <version>0.1.0</version>
@@ -31,7 +31,7 @@ PS. This repository is just for testing jcenter.
 2. Use PiCrop in `Activity` or `Fragment` or `Fragment-v4`.
 
   ```java
-  piCrop = new PiCrop(this);
+  PiCrop piCrop = new PiCrop(this);
   ```
 
 3. To load and crop picture with callback.
