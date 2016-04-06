@@ -19,6 +19,7 @@ package com.moinut.picrop;
 import android.net.Uri;
 
 public interface OnCropListener {
+
     void onStart();
     void onSuccess(Uri picUri);
     void onError(String errorMsg);

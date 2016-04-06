@@ -1,6 +1,6 @@
 # PiCrop
 #### 图片剪裁库，暂且使用了Android原生的剪裁
-PS. 写这个库其实只是为了测试一下Jcenter罢了
+PS. 写这个库其实只是为了测试一下jCenter罢了
 
 ## Version
 `0.1.0`

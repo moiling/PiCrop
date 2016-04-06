@@ -47,18 +47,39 @@ public class PiCrop {
         this.mFragmentV4 = fragmentV4;
     }
 
+    public void getSquare(int type, OnCropListener listener) {
+        get(type, 1, 1, 0, 0, CropIntent.DEFAULT_FILE_NAME, listener);
+    }
+
     public void get(int type, OnCropListener listener) {
+        get(type, CropIntent.DEFAULT_FILE_NAME, listener);
+    }
+
+    public void get(int type, String fileName, OnCropListener listener) {
+        get(type, 0, 0, 0, 0, fileName, listener);
+    }
+
+    public void get(int type, int aspectX, int aspectY, int outputX, int outputY, String fileName, OnCropListener listener) {
+        get(type, aspectX, aspectY, outputX, outputY, Uri.parse(CropIntent.DEFAULT_IMAGE_LOCATION + fileName), listener);
+    }
+
+    public void get(int type, int aspectX, int aspectY, int outputX, int outputY, Uri saveUri, OnCropListener listener) {
         this.mListener = listener;
         Log.i(TAG, "Start getting the picture.");
-        mListener.onStart();
         switch (type) {
             case FROM_ALBUM:
+                CropIntent.Builder builder = new CropIntent.Builder()
+                        .setAspectX(aspectX)
+                        .setAspectY(aspectY)
+                        .setOutputX(outputX)
+                        .setOutputY(outputY)
+                        .setSaveUri(saveUri);
                 if (mActivity != null) {
-                    picUri = new CropIntent.Builder().start(mActivity);
+                    picUri = builder.start(mActivity);
                 } else if (mFragment != null) {
-                    picUri = new CropIntent.Builder().start(mFragment);
+                    picUri = builder.start(mFragment);
                 } else if (mFragmentV4 != null) {
-                    picUri = new CropIntent.Builder().start(mFragmentV4);
+                    picUri = builder.start(mFragmentV4);
                 } else {
                     throw new NullPointerException("Context is null");
                 }
@@ -74,6 +95,7 @@ public class PiCrop {
             Log.e(TAG, "Listener can't be null.");
             return;
         }
+        mListener.onStart();
         switch (requestCode) {
             case CropIntent.CHOOSE_BIG_PICTURE:
                 if (picUri != null) {

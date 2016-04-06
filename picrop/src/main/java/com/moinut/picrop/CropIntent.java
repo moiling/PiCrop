@@ -28,16 +28,30 @@ public class CropIntent {
 
     public static final int CHOOSE_BIG_PICTURE = 10;
 
-    private static final String ASPECT_X = "aspectX";
-    private static final String ASPECT_Y = "aspectY";
-    private static final String OUTPUT_X = "outputX";
-    private static final String OUTPUT_Y = "outputY";
-    private static final String RETURN_DATA = "return-data";
-    private static final String SCALE = "scale";
-    private static final String NO_FACE_DETECTION = "noFaceDetection";
-    private static final String OUTPUT_FORMAT = "outputFormat";
-    private static final String OUTPUT_QUALITY = "outputQuality";
+    /*
+     * intent params
+     */
+    public static final String ASPECT_X = "aspectX";
+    public static final String ASPECT_Y = "aspectY";
+    public static final String OUTPUT_X = "outputX";
+    public static final String OUTPUT_Y = "outputY";
+    public static final String RETURN_DATA = "return-data";
+    public static final String SCALE = "scale";
+    public static final String NO_FACE_DETECTION = "noFaceDetection";
+    public static final String OUTPUT_FORMAT = "outputFormat";
+    public static final String OUTPUT_QUALITY = "outputQuality";
 
+    /*
+     * file uri
+     */
+    public static final String DEFAULT_IMAGE_LOCATION = "file://"
+            + Environment.getExternalStorageDirectory().getPath()
+            + "/";
+    public static final String DEFAULT_FILE_NAME = "temp";
+
+    /*
+     * init params
+     */
     private int aspectX = 0;
     private int aspectY = 0;
     private int outputX = 0;
@@ -48,13 +62,12 @@ public class CropIntent {
     private boolean noFaceDetection = true;
     private int outputQuality = 100;
     private Bitmap bitmap;
-    private Uri saveUri;
+    private Uri saveUri = Uri.parse(DEFAULT_IMAGE_LOCATION + DEFAULT_FILE_NAME);
 
-    public CropIntent() {
-        final String IMAGE_FILE_LOCATION = "file://" + Environment.getExternalStorageDirectory().getPath() + "/temp";
-        saveUri = Uri.parse(IMAGE_FILE_LOCATION);
-    }
-
+    /**
+     * Use params to create an intent.
+     * @return crop image intent
+     */
     public Intent getIntent() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT, null);
         intent.setType("image/*");
@@ -145,7 +158,9 @@ public class CropIntent {
         }
 
         public Builder setSaveUri(Uri saveUri) {
-            mCropIntent.saveUri = saveUri;
+            if (saveUri != null) {
+                mCropIntent.saveUri = saveUri;
+            }
             return this;
         }
 
