@@ -26,7 +26,8 @@ import android.provider.MediaStore;
 
 public class CropIntent {
 
-    public static final int CHOOSE_BIG_PICTURE = 10;
+
+    public static final int CHOOSE_PICTURE_FROM_ALBUM = 10;
 
     /*
      * intent params
@@ -66,11 +67,12 @@ public class CropIntent {
 
     /**
      * Use params to create an intent.
+     * @param data The image from other activity back.
      * @return crop image intent
      */
-    public Intent getIntent() {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT, null);
-        intent.setType("image/*");
+    public Intent getIntent(Intent data) {
+        Intent intent = new Intent("com.android.camera.action.CROP");
+        intent.setDataAndType(data.getData(), "image/*");
         intent.putExtra("crop", "true");
         if (aspectX != 0) intent.putExtra(ASPECT_X, aspectX);
         if (aspectY != 0) intent.putExtra(ASPECT_Y, aspectY);
@@ -91,30 +93,30 @@ public class CropIntent {
 
         }
 
-        public Uri start(Activity activity) {
-            return start(activity, CHOOSE_BIG_PICTURE);
+        public Uri start(Activity activity, Intent data) {
+            return start(activity, data, CHOOSE_PICTURE_FROM_ALBUM);
         }
 
-        public Uri start(Fragment fragment) {
-            return start(fragment, CHOOSE_BIG_PICTURE);
+        public Uri start(Fragment fragment, Intent data) {
+            return start(fragment, data, CHOOSE_PICTURE_FROM_ALBUM);
         }
 
-        public Uri start(android.support.v4.app.Fragment fragment) {
-            return start(fragment, CHOOSE_BIG_PICTURE);
+        public Uri start(android.support.v4.app.Fragment fragment, Intent data) {
+            return start(fragment, data, CHOOSE_PICTURE_FROM_ALBUM);
         }
 
-        public Uri start(android.support.v4.app.Fragment fragment, int type) {
-            fragment.startActivityForResult(mCropIntent.getIntent(), type);
+        public Uri start(android.support.v4.app.Fragment fragment, Intent data, int type) {
+            fragment.startActivityForResult(mCropIntent.getIntent(data), type);
             return mCropIntent.saveUri;
         }
 
-        public Uri start(Fragment fragment, int type) {
-            fragment.startActivityForResult(mCropIntent.getIntent(), type);
+        public Uri start(Fragment fragment, Intent data, int type) {
+            fragment.startActivityForResult(mCropIntent.getIntent(data), type);
             return mCropIntent.saveUri;
         }
 
-        public Uri start(Activity activity, int type) {
-            activity.startActivityForResult(mCropIntent.getIntent(), type);
+        public Uri start(Activity activity, Intent data, int type) {
+            activity.startActivityForResult(mCropIntent.getIntent(data), type);
             return mCropIntent.saveUri;
         }
 

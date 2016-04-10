@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    buildToolsVersion "23.0.3"
 
     defaultConfig {
         applicationId "com.moinut.picropdemo"
@@ -19,10 +19,19 @@ android {
     }
 }
 
+// You don't need it
+repositories {
+    maven {
+        url 'http://dl.bintray.com/moiling/maven'
+    }
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.2.1'
-    compile 'com.moinut:picrop:0.1.0'
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    // Use this
+    compile 'com.moinut:picrop:0.1.1'
+    // Not this !!!
     //compile project(':picrop')
 }

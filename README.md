@@ -5,7 +5,26 @@ PS. This repository is just for testing jCenter.
 [Chinese README](https://github.com/moiling/PiCrop/blob/master/README_CHINESE.md)
 
 ## Version
-`0.1.0`
+`0.1.1`
+
+## Download
+
+Include the library as local library project (Gradle or Maven choose one).
+
+  1. Gradle:
+
+  ```groovy
+  compile 'com.moinut:picrop:0.1.1'
+  ```
+  2. Maven:
+  ```xml
+  <dependency>
+    <groupId>com.moinut</groupId>
+    <artifactId>picrop</artifactId>
+    <version>0.1.1</version>
+    <type>pom</type>
+  </dependency>
+  ```
 
 ## Usage
 
@@ -13,30 +32,13 @@ PS. This repository is just for testing jCenter.
 
 #### Details of the steps.
 
-1. Include the library as local library project (Gradle or Maven choose one).
-
-  1.1 Gradle:
-
-  ```
-  compile 'com.moinut:picrop:0.1.0'
-  ```
-  1.2 Maven:
-  ```
-  <dependency>
-    <groupId>com.moinut</groupId>
-    <artifactId>picrop</artifactId>
-    <version>0.1.0</version>
-    <type>pom</type>
-  </dependency>
-  ```
-
-2. Use PiCrop in `Activity` or `Fragment` or `Fragment-v4`.
+1. Use PiCrop in `Activity` or `Fragment` or `Fragment-v4`.
 
   ```java
   PiCrop piCrop = new PiCrop(this);
   ```
 
-3. To load and crop picture with callback.
+2. To load and crop picture with callback.
 
   ```java
   piCrop.get(PiCrop.FROM_ALBUM, new OnCropListener() {
@@ -57,7 +59,7 @@ PS. This repository is just for testing jCenter.
   });
   ```
 
-4. Override onActivityResult method and handle PiCrop result.
+3. Override onActivityResult method and handle PiCrop result.
 
   ```java
   @Override

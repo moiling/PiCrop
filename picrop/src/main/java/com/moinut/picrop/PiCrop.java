@@ -34,6 +34,7 @@ public class PiCrop {
 
     private Uri picUri;
     private OnCropListener mListener;
+    private CropIntent.Builder cropIntent;
 
     public PiCrop(Activity activity) {
         this.mActivity = activity;
@@ -66,27 +67,33 @@ public class PiCrop {
     public void get(int type, int aspectX, int aspectY, int outputX, int outputY, Uri saveUri, OnCropListener listener) {
         this.mListener = listener;
         Log.i(TAG, "Start getting the picture.");
+        // Get crop intent
+        cropIntent = new CropIntent.Builder()
+                .setAspectX(aspectX)
+                .setAspectY(aspectY)
+                .setOutputX(outputX)
+                .setOutputY(outputY)
+                .setSaveUri(saveUri);
         switch (type) {
             case FROM_ALBUM:
-                CropIntent.Builder builder = new CropIntent.Builder()
-                        .setAspectX(aspectX)
-                        .setAspectY(aspectY)
-                        .setOutputX(outputX)
-                        .setOutputY(outputY)
-                        .setSaveUri(saveUri);
+                Intent intent = new Intent(Intent.ACTION_PICK, null);
+                intent.setDataAndType(picUri, "image/*");
                 if (mActivity != null) {
-                    picUri = builder.start(mActivity);
+                    mActivity.startActivityForResult(intent, FROM_ALBUM);
                 } else if (mFragment != null) {
-                    picUri = builder.start(mFragment);
+                    mFragment.startActivityForResult(intent, FROM_ALBUM);
                 } else if (mFragmentV4 != null) {
-                    picUri = builder.start(mFragmentV4);
-                } else {
-                    throw new NullPointerException("Context is null");
+                    mFragmentV4.startActivityForResult(intent, FROM_ALBUM);
                 }
                 break;
             case FROM_CAMERA:
                 break;
         }
+    }
+
+    // Set your own crop intent
+    public void setCropIntent(CropIntent.Builder cropIntent) {
+        this.cropIntent = cropIntent;
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -95,9 +102,19 @@ public class PiCrop {
             Log.e(TAG, "Listener can't be null.");
             return;
         }
-        mListener.onStart();
         switch (requestCode) {
-            case CropIntent.CHOOSE_BIG_PICTURE:
+            case FROM_ALBUM:
+                if (mActivity != null) {
+                    picUri = cropIntent.start(mActivity, data);
+                } else if (mFragment != null) {
+                    picUri = cropIntent.start(mFragment, data);
+                } else if (mFragmentV4 != null) {
+                    picUri = cropIntent.start(mFragmentV4, data);
+                } else {
+                    throw new NullPointerException("Context is null");
+                }
+            case CropIntent.CHOOSE_PICTURE_FROM_ALBUM:
+                mListener.onStart();
                 if (picUri != null) {
                     Log.i(TAG, "Picture crop success.");
                     mListener.onSuccess(picUri);

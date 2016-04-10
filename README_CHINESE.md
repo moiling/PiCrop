@@ -3,7 +3,26 @@
 PS. 写这个库其实只是为了测试一下jCenter罢了
 
 ## Version
-`0.1.0`
+`0.1.1`
+
+## Download
+
+首先把远程库加入你的项目里呀 (Gradle 或 Maven 选择一个就好了).
+
+  1. Gradle:
+
+  ```groovy
+  compile 'com.moinut:picrop:0.1.1'
+  ```
+  2. Maven:
+  ```xml
+  <dependency>
+    <groupId>com.moinut</groupId>
+    <artifactId>picrop</artifactId>
+    <version>0.1.1</version>
+    <type>pom</type>
+  </dependency>
+  ```
 
 ## Usage
 
@@ -11,30 +30,13 @@ PS. 写这个库其实只是为了测试一下jCenter罢了
 
 #### 步骤
 
-1. 首先把远程库加入你的项目里呀 (Gradle 或 Maven 选择一个就好了).
-
-  1.1 Gradle:
-
-  ```
-  compile 'com.moinut:picrop:0.1.0'
-  ```
-  1.2 Maven:
-  ```
-  <dependency>
-    <groupId>com.moinut</groupId>
-    <artifactId>picrop</artifactId>
-    <version>0.1.0</version>
-    <type>pom</type>
-  </dependency>
-  ```
-
-2. 在 `Activity` 或 `Fragment` 或 `Fragment-v4` 里实例化我们的PiCrop以便我们使用它
+1. 在 `Activity` 或 `Fragment` 或 `Fragment-v4` 里实例化我们的PiCrop以便我们使用它
 
   ```java
   PiCrop piCrop = new PiCrop(this);
   ```
 
-3. 使用`get`方法，通过`type`选择得到图片的途径（目前版本只能从本地文件），通过回调做你想做的事情
+2. 使用`get`方法，通过`type`选择得到图片的途径（目前版本只能从本地文件），通过回调做你想做的事情
 
   ```java
   piCrop.get(PiCrop.FROM_ALBUM, new OnCropListener() {
@@ -55,7 +57,7 @@ PS. 写这个库其实只是为了测试一下jCenter罢了
   });
   ```
 
-4. 复写`onActivityResult`方法，并实现PiCrop的`onActivityResult`，一定要写！否则结果得不到，那就是功亏一篑
+3. 复写`onActivityResult`方法，并实现PiCrop的`onActivityResult`，一定要写！否则结果得不到，那就是功亏一篑
 
   ```java
   @Override
