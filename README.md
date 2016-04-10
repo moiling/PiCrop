@@ -17,6 +17,7 @@ Include the library as local library project (Gradle or Maven choose one).
   compile 'com.moinut:picrop:0.1.1'
   ```
   2. Maven:
+
   ```xml
   <dependency>
     <groupId>com.moinut</groupId>

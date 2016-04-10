@@ -15,6 +15,7 @@ PS. 写这个库其实只是为了测试一下jCenter罢了
   compile 'com.moinut:picrop:0.1.1'
   ```
   2. Maven:
+
   ```xml
   <dependency>
     <groupId>com.moinut</groupId>
