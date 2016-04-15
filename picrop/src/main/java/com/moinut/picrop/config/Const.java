@@ -14,13 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.moinut.picrop;
+package com.moinut.picrop.config;
 
-import android.net.Uri;
-
-public interface OnCropListener {
-
-    void onStart();
-    void onSuccess(Uri picUri);
-    void onError(String errorMsg);
+public class Const {
+    public static final int CHOOSE_PICTURE_FROM_ALBUM = 0;
+    public static final int CROP_PICTURE = 1;
 }

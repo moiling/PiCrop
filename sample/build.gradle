@@ -31,7 +31,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
     // Use this
-    compile 'com.moinut:picrop:0.1.1'
+    //compile 'com.moinut:picrop:0.1.1'
     // Not this !!!
-    //compile project(':picrop')
+    compile project(':picrop')
 }

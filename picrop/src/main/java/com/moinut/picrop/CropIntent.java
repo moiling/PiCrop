@@ -24,10 +24,9 @@ import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 
+import com.moinut.picrop.config.Const;
+
 public class CropIntent {
-
-
-    public static final int CHOOSE_PICTURE_FROM_ALBUM = 10;
 
     /*
      * intent params
@@ -94,15 +93,15 @@ public class CropIntent {
         }
 
         public Uri start(Activity activity, Intent data) {
-            return start(activity, data, CHOOSE_PICTURE_FROM_ALBUM);
+            return start(activity, data, Const.CROP_PICTURE);
         }
 
         public Uri start(Fragment fragment, Intent data) {
-            return start(fragment, data, CHOOSE_PICTURE_FROM_ALBUM);
+            return start(fragment, data, Const.CROP_PICTURE);
         }
 
         public Uri start(android.support.v4.app.Fragment fragment, Intent data) {
-            return start(fragment, data, CHOOSE_PICTURE_FROM_ALBUM);
+            return start(fragment, data, Const.CROP_PICTURE);
         }
 
         public Uri start(android.support.v4.app.Fragment fragment, Intent data, int type) {

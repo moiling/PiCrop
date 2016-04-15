@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.moinut.picrop.OnCropListener;
+import com.moinut.picrop.callback.OnCropListener;
 import com.moinut.picrop.PiCrop;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
