@@ -39,8 +39,9 @@ PS. 写这个库其实只是为了测试一下jCenter罢了
 
 2. 使用`get`方法，通过`type`选择得到图片的途径，通过回调做你想做的事情
 
-`FROM_ALBUM`  : 从相册中选择图片剪切<br>
-`FROM_CAMERA` : 照一张照片来剪切
+  `FROM_ALBUM`  : 从相册中选择图片剪切<br>
+  `FROM_CAMERA` : 照一张照片来剪切
+  
   ```java
   piCrop.get(PiCrop.FROM_ALBUM /*或者: PiCrop.FROM_CAMERA*/, new OnCropListener() {
       @Override
@@ -71,18 +72,18 @@ PS. 写这个库其实只是为了测试一下jCenter罢了
   ```
 
 ## License
-```
-Copyright (c) 2016  MOILING
+  ```
+  Copyright (c) 2016  MOILING
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+      http://www.apache.org/licenses/LICENSE-2.0
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-```
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  ```
