@@ -20,6 +20,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.util.Log;
 
 import com.moinut.picrop.callback.OnCropListener;
@@ -87,6 +88,9 @@ public class PiCrop {
                 mContext.startAlbum(intent);
                 break;
             case FROM_CAMERA:
+                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, picUri);
+                mContext.startCamera(cameraIntent);
                 break;
         }
     }
@@ -103,8 +107,10 @@ public class PiCrop {
             return;
         }
         switch (requestCode) {
+            case Const.TAKE_PHOTO_FROM_CAMERA:
             case Const.CHOOSE_PICTURE_FROM_ALBUM:
                 mContext.startCrop(cropIntent, data);
+                break;
             case Const.CROP_PICTURE:
                 mListener.onStart();
                 if (picUri != null) {

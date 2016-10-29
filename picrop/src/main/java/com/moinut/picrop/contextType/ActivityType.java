@@ -36,8 +36,8 @@ public class ActivityType implements ContextType {
     }
 
     @Override
-    public void startCamera() {
-
+    public void startCamera(Intent intent) {
+        mActivity.startActivityForResult(intent, Const.TAKE_PHOTO_FROM_CAMERA);
     }
 
     @Override

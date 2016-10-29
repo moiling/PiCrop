@@ -18,5 +18,6 @@ package com.moinut.picrop.config;
 
 public class Const {
     public static final int CHOOSE_PICTURE_FROM_ALBUM = 0;
-    public static final int CROP_PICTURE = 1;
+    public static final int TAKE_PHOTO_FROM_CAMERA = 1;
+    public static final int CROP_PICTURE = 2;
 }

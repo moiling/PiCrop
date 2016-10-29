@@ -71,7 +71,12 @@ public class CropIntent {
      */
     public Intent getIntent(Intent data) {
         Intent intent = new Intent("com.android.camera.action.CROP");
-        intent.setDataAndType(data.getData(), "image/*");
+        if (data != null) {
+            intent.setDataAndType(data.getData(), "image/*");
+        } else {
+            intent.setDataAndType(saveUri, "image/*"); // camera don't return data.
+        }
+
         intent.putExtra("crop", "true");
         if (aspectX != 0) intent.putExtra(ASPECT_X, aspectX);
         if (aspectY != 0) intent.putExtra(ASPECT_Y, aspectY);

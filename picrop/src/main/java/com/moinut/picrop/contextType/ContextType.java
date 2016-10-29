@@ -22,6 +22,6 @@ import com.moinut.picrop.CropIntent;
 
 public interface ContextType {
     void startAlbum(Intent intent);
-    void startCamera();
+    void startCamera(Intent intent);
     void startCrop(CropIntent.Builder cropIntent, Intent data);
 }

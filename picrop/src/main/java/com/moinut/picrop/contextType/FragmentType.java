@@ -35,8 +35,8 @@ public class FragmentType implements ContextType {
     }
 
     @Override
-    public void startCamera() {
-
+    public void startCamera(Intent intent) {
+        mFragment.startActivityForResult(intent, Const.TAKE_PHOTO_FROM_CAMERA);
     }
 
     @Override

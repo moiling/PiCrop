@@ -16,6 +16,12 @@
         android:layout_height="wrap_content"
         android:text="CROP FROM ALBUM"/>
 
+    <Button
+        android:id="@+id/btn_crop_from_camera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CROP FROM CAMERA"/>
+
     <ImageView
         android:id="@+id/iv_show_pic"
         android:layout_gravity="center"
