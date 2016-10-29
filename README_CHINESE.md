@@ -37,10 +37,12 @@ PS. 写这个库其实只是为了测试一下jCenter罢了
   PiCrop piCrop = new PiCrop(this);
   ```
 
-2. 使用`get`方法，通过`type`选择得到图片的途径（目前版本只能从本地文件），通过回调做你想做的事情
+2. 使用`get`方法，通过`type`选择得到图片的途径，通过回调做你想做的事情
 
+`FROM_ALBUM`  : 从相册中选择图片剪切<br>
+`FROM_CAMERA` : 照一张照片来剪切
   ```java
-  piCrop.get(PiCrop.FROM_ALBUM, new OnCropListener() {
+  piCrop.get(PiCrop.FROM_ALBUM /*或者: PiCrop.FROM_CAMERA*/, new OnCropListener() {
       @Override
       public void onStart() {
           // 当它开始工作的时候，你可以在这里显示个进度条什么的，让它慢慢转

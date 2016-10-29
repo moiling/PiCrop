@@ -5,7 +5,7 @@ PS. This repository is just for testing jCenter.
 [Chinese README](https://github.com/moiling/PiCrop/blob/master/README_CHINESE.md)
 
 ## Version
-`0.1.2`
+`0.2.0`
 
 ## Download
 
@@ -22,7 +22,7 @@ Include the library as local library project (Gradle or Maven choose one).
   <dependency>
     <groupId>com.moinut</groupId>
     <artifactId>picrop</artifactId>
-    <version>0.1.2</version>
+    <version>0.2.0</version>
     <type>pom</type>
   </dependency>
   ```
@@ -41,8 +41,11 @@ Include the library as local library project (Gradle or Maven choose one).
 
 2. To load and crop picture with callback.
 
+`FROM_ALBUM`  : Choose picture from album to crop<br>
+`FROM_CAMERA` : Take photo to crop
+
   ```java
-  piCrop.get(PiCrop.FROM_ALBUM, new OnCropListener() {
+  piCrop.get(PiCrop.FROM_ALBUM /*OR: PiCrop.FROM_CAMERA*/, new OnCropListener() {
       @Override
       public void onStart() {
           // When PiCrop start working. You can do something like show a progressbar.
