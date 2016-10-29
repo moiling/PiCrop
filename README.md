@@ -14,7 +14,7 @@ Include the library as local library project (Gradle or Maven choose one).
   1. Gradle:
 
   ```groovy
-  compile 'com.moinut:picrop:0.1.2'
+  compile 'com.moinut:picrop:0.2.0'
   ```
   2. Maven:
 
