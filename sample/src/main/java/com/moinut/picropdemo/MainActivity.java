@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.moinut.picrop.CropIntent;
 import com.moinut.picrop.PiCrop;
 import com.moinut.picrop.callback.OnCropListener;
 
@@ -52,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 type = PiCrop.FROM_CAMERA;
                 break;
         }
+
+        piCrop.setCropIntent(new CropIntent.Builder().setSaveUri(Uri.parse("file://" + this.getExternalFilesDir(null).getPath() + "/temp.jpg")));
 
         piCrop.get(type, new OnCropListener() {
             @Override

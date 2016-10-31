@@ -23,10 +23,13 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 
 import com.moinut.picrop.config.Const;
 
 public class CropIntent {
+
+    public static final String TAG = CropIntent.class.getSimpleName();
 
     /*
      * intent params
@@ -71,6 +74,8 @@ public class CropIntent {
      */
     public Intent getIntent(Intent data) {
         Intent intent = new Intent("com.android.camera.action.CROP");
+        Log.i(TAG, "getIntent: data -> " + data);
+        Log.i(TAG, "getIntent: saveUri ->" + saveUri.getPath());
         if (data != null) {
             intent.setDataAndType(data.getData(), "image/*");
         } else {
@@ -168,6 +173,10 @@ public class CropIntent {
                 mCropIntent.saveUri = saveUri;
             }
             return this;
+        }
+
+        public Uri getUri() {
+            return mCropIntent.saveUri;
         }
 
         public Builder setScale(boolean scale) {

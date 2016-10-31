@@ -3,7 +3,7 @@
 PS. 写这个库其实只是为了测试一下jCenter罢了
 
 ## Version
-`0.2.0`
+`0.2.1`
 
 ## Download
 
@@ -12,7 +12,7 @@ PS. 写这个库其实只是为了测试一下jCenter罢了
   1. Gradle:
 
   ```groovy
-  compile 'com.moinut:picrop:0.2.0'
+  compile 'com.moinut:picrop:0.2.1'
   ```
   2. Maven:
 
@@ -20,7 +20,7 @@ PS. 写这个库其实只是为了测试一下jCenter罢了
   <dependency>
     <groupId>com.moinut</groupId>
     <artifactId>picrop</artifactId>
-    <version>0.2.0</version>
+    <version>0.2.1</version>
     <type>pom</type>
   </dependency>
   ```

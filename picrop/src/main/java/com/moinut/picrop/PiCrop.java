@@ -72,15 +72,17 @@ public class PiCrop {
 
     public void get(int type, int aspectX, int aspectY, int outputX, int outputY, Uri saveUri, OnCropListener listener) {
         this.mListener = listener;
-        this.picUri = saveUri;
+        this.picUri = cropIntent == null ? saveUri : cropIntent.getUri();
         Log.i(TAG, "Start getting the picture.");
         // Get crop intent
-        cropIntent = new CropIntent.Builder()
-                .setAspectX(aspectX)
-                .setAspectY(aspectY)
-                .setOutputX(outputX)
-                .setOutputY(outputY)
-                .setSaveUri(saveUri);
+        if (cropIntent == null) {
+            cropIntent = new CropIntent.Builder()
+                    .setAspectX(aspectX)
+                    .setAspectY(aspectY)
+                    .setOutputX(outputX)
+                    .setOutputY(outputY)
+                    .setSaveUri(saveUri);
+        }
         switch (type) {
             case FROM_ALBUM:
                 Intent intent = new Intent(Intent.ACTION_PICK, null);
@@ -108,10 +110,13 @@ public class PiCrop {
         }
         switch (requestCode) {
             case Const.TAKE_PHOTO_FROM_CAMERA:
+                Log.i(TAG, "onActivityResult(TAKE_PHOTO_FROM_CAMERA): data -> " + data);
             case Const.CHOOSE_PICTURE_FROM_ALBUM:
+                Log.i(TAG, "onActivityResult(CHOOSE_PICTURE_FROM_ALBUM): data -> " + data);
                 mContext.startCrop(cropIntent, data);
                 break;
             case Const.CROP_PICTURE:
+                Log.i(TAG, "onActivityResult(CROP_PICTURE): data -> " + data);
                 mListener.onStart();
                 if (picUri != null) {
                     Log.i(TAG, "Picture crop success.");

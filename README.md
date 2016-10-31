@@ -5,7 +5,7 @@ PS. This repository is just for testing jCenter.
 [Chinese README](https://github.com/moiling/PiCrop/blob/master/README_CHINESE.md)
 
 ## Version
-`0.2.0`
+`0.2.1`
 
 ## Download
 
@@ -14,7 +14,7 @@ Include the library as local library project (Gradle or Maven choose one).
   1. Gradle:
 
   ```groovy
-  compile 'com.moinut:picrop:0.2.0'
+  compile 'com.moinut:picrop:0.2.1'
   ```
   2. Maven:
 
@@ -22,7 +22,7 @@ Include the library as local library project (Gradle or Maven choose one).
   <dependency>
     <groupId>com.moinut</groupId>
     <artifactId>picrop</artifactId>
-    <version>0.2.0</version>
+    <version>0.2.1</version>
     <type>pom</type>
   </dependency>
   ```
